@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mäe Autoteenindus – autoremont Tartus</title>
+  <meta name="description" content="Autoremont, hooldus ja rehvivahetus Tartus. Vaata hindu ja broneeri aeg internetis.">
+
+  <!-- Font: Barlow (made in the spirit of road signs and number plates) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="#top">Mäe Autoteenindus</a>
+
+      <nav class="main-nav" aria-label="Peamenüü">
+        <a href="#hinnad" data-i18n="nav_prices">Hinnad</a>
+        <a href="#broneeri" data-i18n="nav_book">Broneeri</a>
+        <a href="#kontakt" data-i18n="nav_contact">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language switch: script.js swaps every text that has data-i18n -->
+        <div class="lang-switch" role="group" aria-label="Keel / Language">
+          <button type="button" data-lang="et" aria-pressed="true">ET</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="btn btn-small" href="tel:+37250000000" data-i18n="call">Helista</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          <h1 data-i18n="hero_title">Autoremont Tartus. Vaba aeg juba homme.</h1>
+          <p class="lead" data-i18n="hero_lead">Hooldus, rehvid, pidurid ja diagnostika. Ütleme hinna enne töö algust, et arve ei tuleks üllatusena.</p>
+        </div>
+
+        <!-- The memorable bit: book by typing your number plate -->
+        <form class="plate-form" id="plateForm" novalidate>
+          <label for="plateInput" class="plate-label" data-i18n="plate_label">Sisesta oma auto numbrimärk</label>
+          <div class="plate-row">
+            <div class="plate">
+              <span class="plate-eu" aria-hidden="true">
+                <svg viewBox="0 0 20 20" width="18" height="18"><g fill="#FFD617"><circle cx="10" cy="3" r="1.1"/><circle cx="13.5" cy="4" r="1.1"/><circle cx="16" cy="6.5" r="1.1"/><circle cx="17" cy="10" r="1.1"/><circle cx="16" cy="13.5" r="1.1"/><circle cx="13.5" cy="16" r="1.1"/><circle cx="10" cy="17" r="1.1"/><circle cx="6.5" cy="16" r="1.1"/><circle cx="4" cy="13.5" r="1.1"/><circle cx="3" cy="10" r="1.1"/><circle cx="4" cy="6.5" r="1.1"/><circle cx="6.5" cy="4" r="1.1"/></g></svg>
+                EST
+              </span>
+              <input id="plateInput" class="plate-input" type="text" inputmode="text"
+                     autocomplete="off" spellcheck="false" maxlength="8" placeholder="123 ABC">
+            </div>
+            <button class="btn btn-yellow" type="submit" data-i18n="plate_button">Broneeri aeg</button>
+          </div>
+          <p class="plate-hint" data-i18n="plate_hint">Leiame sinu autole sobiva aja ja helistame tagasi.</p>
+        </form>
+      </div>
+
+      <dl class="wrap quick-facts">
+        <div><dt data-i18n="fact_open">Avatud</dt><dd data-i18n="fact_open_v">E–R 8–18, L 10–15</dd></div>
+        <div><dt data-i18n="fact_where">Asukoht</dt><dd>Näidise 12, Tartu</dd></div>
+        <div><dt data-i18n="fact_phone">Telefon</dt><dd><a href="tel:+37250000000">+372 5000 0000</a></dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ PRICES ============ -->
+    <section class="section" id="hinnad">
+      <div class="wrap">
+        <h2 data-i18n="prices_title">Hinnad</h2>
+        <p class="section-intro" data-i18n="prices_intro">Hinnad sisaldavad tööd. Varuosad lisanduvad ja enne nende tellimist küsime alati sinu nõusolekut.</p>
+
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th scope="col" data-i18n="col_service">Teenus</th>
+              <th scope="col" data-i18n="col_time">Aega kulub</th>
+              <th scope="col" class="num" data-i18n="col_price">Hind</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td data-i18n="s_oil">Õli- ja filtrivahetus</td><td data-i18n="t_30">30 min</td><td class="num"><span data-i18n="from">alates</span> 45 €</td></tr>
+            <tr><td data-i18n="s_tyres">Rehvivahetus (4 ratast)</td><td data-i18n="t_40">40 min</td><td class="num"><span data-i18n="from">alates</span> 30 €</td></tr>
+            <tr><td data-i18n="s_diag">Veakoodide lugemine ja diagnostika</td><td data-i18n="t_45">45 min</td><td class="num">35 €</td></tr>
+            <tr><td data-i18n="s_brakes">Piduriklotside vahetus (üks telg)</td><td data-i18n="t_60">1 h</td><td class="num"><span data-i18n="from">alates</span> 60 €</td></tr>
+            <tr><td data-i18n="s_ac">Kliimaseadme hooldus</td><td data-i18n="t_60">1 h</td><td class="num"><span data-i18n="from">alates</span> 55 €</td></tr>
+            <tr><td data-i18n="s_inspect">Ettevalmistus ülevaatuseks</td><td data-i18n="t_60">1 h</td><td class="num"><span data-i18n="from">alates</span> 40 €</td></tr>
+            <tr><td data-i18n="s_service">Hooldus tehase graafiku järgi</td><td data-i18n="t_2h">2 h</td><td class="num"><span data-i18n="from">alates</span> 90 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS (a real sequence, so numbers are fine) ============ -->
+    <section class="section section-blue">
+      <div class="wrap">
+        <h2 data-i18n="steps_title">Kuidas see käib</h2>
+        <ol class="steps">
+          <li>
+            <h3 data-i18n="step1_t">Saada broneering</h3>
+            <p data-i18n="step1_p">Numbrimärk, teenus ja sobiv päev. Võtab minuti.</p>
+          </li>
+          <li>
+            <h3 data-i18n="step2_t">Helistame tagasi</h3>
+            <p data-i18n="step2_p">Sama tööpäeva jooksul kinnitame kellaaja ja ütleme hinna.</p>
+          </li>
+          <li>
+            <h3 data-i18n="step3_t">Too auto meile</h3>
+            <p data-i18n="step3_p">Kui leiame midagi lisaks, helistame enne, kui seda parandame.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING FORM ============ -->
+    <section class="section" id="broneeri">
+      <div class="wrap narrow">
+        <h2 data-i18n="book_title">Broneeri aeg</h2>
+
+        <form class="booking-form" id="bookingForm" novalidate>
+          <div class="field">
+            <label for="bPlate" data-i18n="f_plate">Numbrimärk</label>
+            <input id="bPlate" name="plate" type="text" maxlength="8" placeholder="123 ABC" required>
+          </div>
+
+          <div class="field">
+            <label for="bService" data-i18n="f_service">Teenus</label>
+            <select id="bService" name="service" required>
+              <option value="" data-i18n="f_choose">Vali teenus</option>
+              <option data-i18n="s_oil">Õli- ja filtrivahetus</option>
+              <option data-i18n="s_tyres">Rehvivahetus (4 ratast)</option>
+              <option data-i18n="s_diag">Veakoodide lugemine ja diagnostika</option>
+              <option data-i18n="s_brakes">Piduriklotside vahetus (üks telg)</option>
+              <option data-i18n="s_ac">Kliimaseadme hooldus</option>
+              <option data-i18n="s_inspect">Ettevalmistus ülevaatuseks</option>
+              <option data-i18n="s_service">Hooldus tehase graafiku järgi</option>
+              <option data-i18n="s_other">Midagi muud</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="bName" data-i18n="f_name">Nimi</label>
+              <input id="bName" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="bPhone" data-i18n="f_phone">Telefon</label>
+              <input id="bPhone" name="phone" type="tel" autocomplete="tel" placeholder="+372" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bDate" data-i18n="f_date">Sobiv päev</label>
+            <input id="bDate" name="date" type="date">
+          </div>
+
+          <div class="field">
+            <label for="bNote" data-i18n="f_note">Mis autoga juhtus? (pole kohustuslik)</label>
+            <textarea id="bNote" name="note" rows="3"></textarea>
+          </div>
+
+          <p class="form-error" id="formError" role="alert" hidden></p>
+          <button class="btn btn-yellow btn-wide" type="submit" data-i18n="f_submit">Saada broneering</button>
+        </form>
+
+        <!-- Shown after the form is sent -->
+        <div class="booking-done" id="bookingDone" hidden tabindex="-1">
+          <h3 data-i18n="done_title">Broneering saadetud</h3>
+          <p data-i18n="done_text">Helistame sulle tööpäeva jooksul ja lepime kellaaja kokku.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section-concrete" id="kontakt">
+      <div class="wrap contact-grid">
+        <div>
+          <h2 data-i18n="contact_title">Kontakt</h2>
+          <p class="big-phone"><a href="tel:+37250000000">+372 5000 0000</a></p>
+          <p><a href="mailto:info@naide.ee">info@naide.ee</a></p>
+          <p>Näidise 12, 50000 Tartu</p>
+
+          <table class="hours">
+            <caption data-i18n="hours_title">Lahtiolekuajad</caption>
+            <tr><th scope="row" data-i18n="d_weekdays">Esmaspäev–reede</th><td>8.00–18.00</td></tr>
+            <tr><th scope="row" data-i18n="d_sat">Laupäev</th><td>10.00–15.00</td></tr>
+            <tr><th scope="row" data-i18n="d_sun">Pühapäev</th><td data-i18n="closed">Suletud</td></tr>
+          </table>
+        </div>
+
+        <div class="map">
+          <!-- Google Maps embed. For a real client, search their address on maps.google.com,
+               click Share > Embed a map, and paste their iframe here. -->
+          <iframe title="Kaart" src="https://www.google.com/maps?q=Tartu&output=embed"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 Mäe Autoteenindus OÜ</p>
+      <p class="demo-note" data-i18n="demo_note">Näidisleht. Ettevõte, aadress ja hinnad on välja mõeldud.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

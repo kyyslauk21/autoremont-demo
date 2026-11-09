@@ -1,0 +1,349 @@
+/* =========================================================
+   Mäe Autoteenindus – demo site
+   Idea: a car workshop. Workwear blue, concrete floor grey,
+   yellow floor-line paint, and an Estonian number plate.
+   ========================================================= */
+
+/* ---------- 1. Design tokens (change these to re-brand the whole site) ---------- */
+:root {
+  --ink: #1C2733;        /* text */
+  --steel: #5E6A75;      /* secondary text */
+  --concrete: #E6E9EB;   /* garage floor grey */
+  --paper: #F7F8F9;      /* page background */
+  --overall: #2347A6;    /* workwear blue */
+  --signal: #F2C230;     /* floor-line yellow */
+  --plate-blue: #003399; /* EU strip on the plate */
+
+  --font-body: "Barlow", system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+
+  --radius: 6px;
+  --wrap: 1120px;
+}
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;      /* 17px */
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0 0 0.5em;
+}
+h2 { font-size: clamp(2rem, 4vw, 2.75rem); }
+h3 { font-size: 1.375rem; margin-bottom: 0.25em; }
+
+p { margin: 0 0 1em; }
+a { color: var(--overall); }
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--overall);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+.narrow { max-width: 680px; }
+
+/* ---------- 3. Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #fff;
+  background: var(--overall);
+  border: 0;
+  border-radius: var(--radius);
+  padding: 0.7em 1.3em;
+  cursor: pointer;
+}
+.btn:hover { background: #1B3A8C; }
+
+.btn-yellow { background: var(--signal); color: var(--ink); }
+.btn-yellow:hover { background: #E3B21C; }
+
+.btn-small { font-size: 1.05rem; padding: 0.45em 1em; }
+.btn-wide { width: 100%; }
+
+/* ---------- 4. Header ---------- */
+.site-header {
+  background: var(--overall);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 64px;
+}
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  margin-right: auto;
+}
+.main-nav { display: flex; gap: 1.5rem; }
+.main-nav a { color: #fff; text-decoration: none; font-weight: 500; }
+.main-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.header-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+.lang-switch { display: flex; border: 1px solid rgba(255,255,255,.5); border-radius: var(--radius); overflow: hidden; }
+.lang-switch button {
+  font: 600 0.9rem var(--font-body);
+  background: transparent;
+  color: #fff;
+  border: 0;
+  padding: 0.35em 0.65em;
+  cursor: pointer;
+}
+.lang-switch button[aria-pressed="true"] { background: #fff; color: var(--overall); }
+
+/* ---------- 5. Hero ---------- */
+.hero {
+  background: var(--concrete);
+  /* yellow floor line along the bottom edge */
+  border-bottom: 10px solid var(--signal);
+  padding: clamp(3rem, 8vw, 6rem) 0 2rem;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3rem;
+  align-items: end;
+}
+/* Grid children may shrink below their content width (stops mobile overflow) */
+.hero-inner > * { min-width: 0; }
+
+.hero h1 {
+  font-size: clamp(2.75rem, 6.5vw, 5rem);
+  max-width: 14ch;
+}
+.lead { font-size: 1.2rem; max-width: 34em; color: var(--ink); }
+
+/* Number plate form */
+.plate-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.plate-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.plate {
+  display: flex;
+  flex: 1 1 260px;
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 0 var(--ink);
+}
+.plate:focus-within { outline: 3px solid var(--overall); outline-offset: 3px; }
+
+.plate-eu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 44px;
+  background: var(--plate-blue);
+  color: #fff;
+  font: 700 0.8rem var(--font-body);
+}
+.plate-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  padding: 0.15em 0.5em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+}
+.plate-input::placeholder { color: #B8C0C7; }
+
+.plate-row .btn { font-size: 1.4rem; }
+.plate-hint { color: var(--steel); font-size: 0.95rem; margin-top: 0.75rem; }
+
+/* Quick facts under the hero */
+.quick-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+.quick-facts dt { font-size: 0.9rem; color: var(--steel); }
+.quick-facts dd { margin: 0; font-weight: 600; font-size: 1.1rem; }
+.quick-facts a { color: var(--ink); }
+
+/* ---------- 6. Sections ---------- */
+.section { padding: clamp(3rem, 7vw, 5rem) 0; }
+.section-intro { max-width: 40em; color: var(--steel); margin-bottom: 2rem; }
+
+.section-blue { background: var(--overall); color: #fff; }
+.section-concrete { background: var(--concrete); }
+
+/* Price table – reads like a workshop job sheet */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+.price-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--steel);
+  padding: 0 0 0.6rem;
+  border-bottom: 2px solid var(--ink);
+}
+.price-table td {
+  padding: 1rem 0;
+  border-bottom: 1px solid #CDD3D8;
+}
+.price-table td:first-child { font-weight: 600; padding-right: 1rem; }
+.price-table td:nth-child(2) { color: var(--steel); white-space: nowrap; padding-right: 1rem; }
+.price-table .num {
+  text-align: right;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+.price-table td.num span { font-family: var(--font-body); font-weight: 400; font-size: 0.95rem; color: var(--steel); }
+.price-table th.num { font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; }
+
+/* Steps */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.steps li { counter-increment: step; border-top: 3px solid var(--signal); padding-top: 1rem; }
+.steps li::before {
+  content: counter(step);
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--signal);
+  margin-bottom: 0.5rem;
+}
+.steps p { color: #DCE3F5; margin: 0; }
+
+/* Booking form */
+.booking-form { display: grid; gap: 1.1rem; }
+.field { display: grid; gap: 0.35rem; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+
+.field label { font-weight: 600; }
+.field input,
+.field select,
+.field textarea {
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid #AEB7BF;
+  border-radius: var(--radius);
+  padding: 0.65em 0.75em;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus { border-color: var(--overall); outline: none; box-shadow: 0 0 0 3px rgba(35,71,166,.25); }
+#bPlate { text-transform: uppercase; font-weight: 600; letter-spacing: 0.06em; }
+
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"] { border-color: #B3261E; }
+
+.form-error { color: #B3261E; font-weight: 600; margin: 0; }
+
+.booking-done {
+  border-left: 6px solid var(--signal);
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+}
+.booking-done p { margin: 0; }
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  align-items: start;
+}
+.big-phone { font-family: var(--font-display); font-weight: 700; font-size: 2.25rem; margin-bottom: 0.25em; }
+.big-phone a { color: var(--ink); text-decoration: none; }
+.hours { border-collapse: collapse; margin-top: 1.5rem; }
+.hours caption { text-align: left; font-weight: 600; margin-bottom: 0.5rem; }
+.hours th { text-align: left; font-weight: 400; padding: 0.3rem 2rem 0.3rem 0; }
+.hours td { font-weight: 600; }
+
+.map iframe {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  display: block;
+}
+
+/* Footer */
+.site-footer { background: var(--ink); color: #B8C0C7; padding: 2rem 0; font-size: 0.95rem; }
+.site-footer p { margin: 0.2rem 0; }
+
+/* ---------- 7. Mobile ---------- */
+@media (max-width: 860px) {
+  .hero-inner,
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .steps { grid-template-columns: 1fr; }
+  .main-nav { display: none; }
+}
+@media (max-width: 520px) {
+  .field-row { grid-template-columns: 1fr; }
+  .plate-row .btn { width: 100%; }
+  .price-table td:nth-child(2),
+  .price-table th:nth-child(2) { display: none; }
+  .logo { font-size: 1.25rem; }
+}
+
+/* Respect people who turn off animations */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
